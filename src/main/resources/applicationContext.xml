@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    id:bean名称
+    class:包.类
+    name:别名，多个别名逗号隔开
+-->
+    <bean id="person" name="p,p1" class="org.example.Person"/>
+<!--
+    不给id就会自动生成id：包名+类名+序号
+    应用场景：bean只需要使用一次，使用多次或需要被其他bean引用，则不能用
+    <bean class="org.example.Person"/>
+-->
+
+
+
+</beans>
