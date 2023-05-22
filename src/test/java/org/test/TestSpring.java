@@ -1,9 +1,14 @@
 package org.test;
 
-import org.example.Person;
+import org.example.basic.Constructor.Customer;
+import org.example.basic.Person;
+import org.example.basic.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.sql.Connection;
+import java.util.Set;
 
 public class TestSpring {
     @Test
@@ -61,5 +66,35 @@ public class TestSpring {
         person.setId(1);
         person.setName("bacon");
         System.out.println(person.toString());
+    }
+
+    @Test
+    public void test8() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        Person person = (Person) ctx.getBean("person");
+        System.out.println(person);
+        Set<String> tels = person.getTels();
+        System.out.println(tels);
+    }
+
+    @Test
+    public void test9() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        UserService userService = (UserService) ctx.getBean("UserService");
+        userService.register("bacon","123456");
+
+    }
+    @Test
+    public void test10(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        Customer customer = (Customer) ctx.getBean("Customer");
+        System.out.println(customer);
+
+    }
+    @Test
+    public void test11() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        Connection connection = (Connection) ctx.getBean("conn");
+        System.out.println(connection);
     }
 }

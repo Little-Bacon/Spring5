@@ -1,18 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 <!--    id:bean名称
     class:包.类
     name:别名，多个别名逗号隔开
 -->
-    <bean id="person" name="p,p1" class="org.example.Person"/>
+<!--    <bean id="person" class="org.example.basic.Person" p:name="id" id=10/>-->
+    <bean id="person" class="org.example.basic.Person">
+        <constructor-arg>
+            <map>
+                <entry key="" value=""/>
+            </map>
+        </constructor-arg>
+<!--        <property name="ok" value="123"/>-->
+        <property name="id">
+            <value>10</value>
+        </property>
+        <property name="name">
+            <value>Bacon</value>
+        </property>
+        <property name="email">
+            <list>
+                <value>123456@null.com</value>
+                <value>456789@null.com</value>
+            </list>
+        </property>
+        <property name="tels">
+            <set>
+                <value>123</value>
+                <value>456</value>
+                <value>789</value>
+            </set>
+        </property>
+        <property name="qqs">
+            <map>
+                <entry>
+                    <key><value>this is key</value></key>
+                    <value>this is value</value>
+                </entry>
+                <entry>
+                    <key><value>this is key2</value></key>
+                    <value>this is value2</value>
+                </entry>
+            </map>
+        </property>
+        <property name="p">
+            <props>
+                <prop key="key1">value1</prop>
+                <prop key="key2">value2</prop>
+            </props>
+        </property>
+    </bean>
+<!--    赋值需要一个DAO对象，给一个就行了，而且只用一次所以匿名即可-->
+
+    <bean id="userDao" class="org.example.basic.UserDAO"/>
+    <bean id="UserService" class="org.example.basic.UserServiceImpl">
+        <property name="userDAO">
+<!--            只是引用了之前创建的对象userDAO-->
+            <ref bean="userDao"/>
+        </property>
+    </bean>
+<!--    两者共用一个对象-->
+    <bean id="olderService" class="org.example.basic.UserServiceImpl">
+        <property name="userDAO">
+            <ref bean="userDao"/>
+        </property>
+    </bean>
+
+    <bean id="Customer" class="org.example.basic.Constructor.Customer">
+        <!--一个标签对应一个参数-->
+        <constructor-arg>
+            <value>bacon</value>
+        </constructor-arg>
+        <constructor-arg type="int">
+            <value>100</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="conn" name="conn" class="org.example.factorybean.ConnectionFactoryBean"/>
+
+
 <!--
     不给id就会自动生成id：包名+类名+序号
     应用场景：bean只需要使用一次，使用多次或需要被其他bean引用，则不能用
-    <bean class="org.example.Person"/>
+    <bean class="org.example.basic.Person"/>
 -->
+    <bean id="connFactory" class="org.example.factorybean.ConnnectionFactory1"/>
 
+    <bean id="conn" factory-bean="connFactory" factory-method="getConnection"></bean>
 
-
+    <bean id="connFactory" class="org.example.factorybean.StaticConnectionFactory" factory-method="getConnection"/>
 </beans>
