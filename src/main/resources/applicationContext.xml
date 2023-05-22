@@ -92,4 +92,5 @@
     <bean id="conn" factory-bean="connFactory" factory-method="getConnection"></bean>
 
     <bean id="connFactory" class="org.example.factorybean.StaticConnectionFactory" factory-method="getConnection"/>
+    <bean id="product" class="org.example.life.product"/>
 </beans>

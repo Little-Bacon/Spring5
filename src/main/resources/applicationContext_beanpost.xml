@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- resources和java文件夹在编译时合并，再者idea也会 -->
+    <bean id="c" class="org.example.beanpost.Categroy">
+        <property name="id" value="10"/>
+        <property name="name" value="user1"/>
+
+    </bean>
+    <bean id="myBeanPostProcessor" class="org.example.beanpost.myBeanProcessor"/>
+
+</beans>

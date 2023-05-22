@@ -3,6 +3,8 @@ package org.test;
 import org.example.basic.Constructor.Customer;
 import org.example.basic.Person;
 import org.example.basic.UserService;
+import org.example.beanpost.Categroy;
+import org.example.beanpost.myBeanProcessor;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -96,5 +98,15 @@ public class TestSpring {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
         Connection connection = (Connection) ctx.getBean("conn");
         System.out.println(connection);
+    }
+
+    /**
+     * 测试BeanPostProcessor
+     */
+    @Test
+    public void test12() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext_beanpost.xml");
+        Categroy c = (Categroy) ctx.getBean("c");
+        System.out.println(c.getName());
     }
 }

@@ -1,6 +1,6 @@
 package org.example.basic;
 
-public class UserServiceImpl extends UserService {
+public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     public UserDAO getUserDAO() {
@@ -11,6 +11,13 @@ public class UserServiceImpl extends UserService {
         this.userDAO = userDAO;
     }
     public void register(String name,String passwd){
+//        业务功能
         System.out.println("name="+name+"Password="+passwd);
+    }
+
+    @Override
+    public boolean login(String name, String passwd) {
+        System.out.println("login");
+        return false;
     }
 }
