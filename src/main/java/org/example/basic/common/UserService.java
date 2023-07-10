@@ -1,4 +1,4 @@
-package org.example.basic;
+package org.example.basic.common;
 
 import org.springframework.beans.factory.BeanFactory;
 

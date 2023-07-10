@@ -7,8 +7,8 @@
     class:包.类
     name:别名，多个别名逗号隔开
 -->
-<!--    <bean id="person" class="org.example.basic.Person" p:name="id" id=10/>-->
-    <bean id="person" class="org.example.basic.Person">
+<!--    <bean id="person" class="org.example.basic.common.Person" p:name="id" id=10/>-->
+    <bean id="person" class="org.example.basic.common.Person">
         <constructor-arg>
             <map>
                 <entry key="" value=""/>
@@ -55,15 +55,15 @@
     </bean>
 <!--    赋值需要一个DAO对象，给一个就行了，而且只用一次所以匿名即可-->
 
-    <bean id="userDao" class="org.example.basic.UserDAO"/>
-    <bean id="UserService" class="org.example.basic.UserServiceImpl">
+    <bean id="userDao" class="org.example.basic.common.UserDAO"/>
+    <bean id="UserService" class="org.example.basic.common.UserServiceImpl">
         <property name="userDAO">
 <!--            只是引用了之前创建的对象userDAO-->
             <ref bean="userDao"/>
         </property>
     </bean>
 <!--    两者共用一个对象-->
-    <bean id="olderService" class="org.example.basic.UserServiceImpl">
+    <bean id="olderService" class="org.example.basic.common.UserServiceImpl">
         <property name="userDAO">
             <ref bean="userDao"/>
         </property>
@@ -85,7 +85,7 @@
 <!--
     不给id就会自动生成id：包名+类名+序号
     应用场景：bean只需要使用一次，使用多次或需要被其他bean引用，则不能用
-    <bean class="org.example.basic.Person"/>
+    <bean class="org.example.basic.common.Person"/>
 -->
     <bean id="connFactory" class="org.example.factorybean.ConnnectionFactory1"/>
 
@@ -93,4 +93,6 @@
 
     <bean id="connFactory" class="org.example.factorybean.StaticConnectionFactory" factory-method="getConnection"/>
     <bean id="product" class="org.example.life.product"/>
+
+
 </beans>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+<bean id="userService" class="org.example.basic.common.UserServiceImpl"/>
+<bean id="Befor" class="org.example.basic.dynamic.Before"/>
+<bean id="around" class="org.example.basic.dynamic.Around" />
+<aop:config>
+<!--    所有方法都作为切入点-->
+    <aop:pointcut id="pc" expression="execution(* *(..))"/>
+<!--    组装：将切入点与额外功能进行整合-->
+    <aop:advisor advice-ref="Befor" pointcut-ref="pc"/>
+</aop:config>
+
+</beans>

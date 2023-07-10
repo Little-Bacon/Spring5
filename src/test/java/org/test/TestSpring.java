@@ -1,10 +1,9 @@
 package org.test;
 
 import org.example.basic.Constructor.Customer;
-import org.example.basic.Person;
-import org.example.basic.UserService;
+import org.example.basic.common.Person;
+import org.example.basic.common.UserService;
 import org.example.beanpost.Categroy;
-import org.example.beanpost.myBeanProcessor;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

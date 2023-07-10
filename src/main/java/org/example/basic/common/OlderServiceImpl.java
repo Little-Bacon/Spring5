@@ -1,4 +1,4 @@
-package org.example.basic;
+package org.example.basic.common;
 
 public class OlderServiceImpl implements OlderService{
 
