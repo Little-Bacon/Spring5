@@ -94,12 +94,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.walterjwhite.java.dependencies</groupId>-->
-<!--            <artifactId>aspectjrt</artifactId>-->
-<!--            <version>0.0.17</version>-->
-<!--        </dependency>-->
-
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.6</version>
+        </dependency>
 
     </dependencies>
 

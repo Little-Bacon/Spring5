@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 
 public class ConnectionFactoryBean implements FactoryBean<Connection> {
     public Connection getObject()throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/suns","root","123456");
         return conn;
     }
