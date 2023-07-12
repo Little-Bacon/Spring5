@@ -1,10 +1,7 @@
-package org.example.basic.common;
-
-import org.springframework.beans.factory.BeanFactory;
+package org.example.basic.aspect;
 
 public interface UserService {
     public void register(String name,String passwd);
     public boolean login(String name,String passwd);
 
-//    void register(User user);
 }
