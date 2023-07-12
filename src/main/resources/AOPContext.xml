@@ -5,7 +5,7 @@
 <bean id="userService" class="org.example.basic.common.UserServiceImpl"/>
 <bean id="Befor" class="org.example.basic.dynamic.Before"/>
 <bean id="around" class="org.example.basic.dynamic.Around" />
-<aop:config>
+<aop:config proxy-target-class="false">
 <!--    所有方法都作为切入点-->
     <aop:pointcut id="pc" expression="args(String,String)"/>
 <!--    组装：将切入点与额外功能进行整合-->

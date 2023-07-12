@@ -1,5 +1,6 @@
 package org.test;
 
+import org.example.basic.aspect.UserServiceImpl;
 import org.example.basic.common.User;
 import org.example.basic.common.UserService;
 import org.example.basic.dynamic.Around;
@@ -33,5 +34,13 @@ public class TestAOP {
         userService.login("bacon","123456");
         userService.register(new User());
 
+    }
+    @Test
+    public void test4() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/AOPContext_copy2.xml");
+        org.example.basic.aspect.UserService userService = (org.example.basic.aspect.UserService) ctx.getBean("userService");
+//        只切了login，因此只有login方法有额外功能
+        userService.login("bacon","123456");
+        userService.register(new User());
     }
 }
