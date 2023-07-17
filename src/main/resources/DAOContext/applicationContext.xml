@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!--    连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" >
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/learn?useSSL=false"/>
+        <property name="username" value="bacon"/>
+        <property name="password" value="123456"/>
+    </bean>
+<!--    sqlSessionFactory-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="DAO_example.entity"/>
+        <property name="mapperLocations" >
+            <list>
+                <value>classpath:DAOMapper/*Mapper.xml</value>
+            </list>
+        </property>
+    </bean>
+    <!--MapperScannerConfigurer，创建DAO对象-->
+    <bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean" />
+        <property name="basePackage" value="DAO_example.dao"/>
+    </bean>
+<!--    原始对象-->
+    <bean id="userService" class="DAO_example.service.UserServiceImpl">
+<!--        看似没有DAO对象，实际MapperScannerConfigurer，创建DAO对象，并以类名首字母小写的方式给出-->
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+<!--    额外功能：配置DataSourceTransactionManager即可获得-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+<!--    切面整合-->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+
+</beans>

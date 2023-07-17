@@ -5,7 +5,7 @@
 <configuration>
     <typeAliases>
 <!--        定义别名user  -->
-        <typeAlias alias="user" type="DAO_example.mybatis.User"></typeAlias>
+        <typeAlias alias="user" type="DAO_example.entity.User"></typeAlias>
     </typeAliases>
     <environments default="mysql">
         <environment id="mysql">
@@ -19,7 +19,7 @@
 
     </environments>
     <mappers>
-        <mapper resource="DAOContext/UserDAOMapper.xml" />
+        <mapper resource="DAOMapper/UserDAOMapper.xml"></mapper>
     </mappers>
 </configuration>
 

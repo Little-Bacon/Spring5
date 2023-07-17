@@ -1,4 +1,4 @@
-package DAO_example.mybatis;
+package DAO_example.dao;
 
 import DAO_example.entity.User;
 

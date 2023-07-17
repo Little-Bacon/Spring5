@@ -1,4 +1,4 @@
-package DAO_example.mybatis;
+package DAO_example.entity;
 
 import java.io.Serializable;
 
